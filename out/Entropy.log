@@ -1,4 +1,4 @@
-This is e-upTeX, Version 3.141592653-p4.0.0-u1.28-220214-2.6 (utf8.uptex) (TeX Live 2022) (preloaded format=uplatex 2022.11.21)  23 DEC 2022 21:06
+This is e-upTeX, Version 3.141592653-p4.0.0-u1.28-220214-2.6 (utf8.uptex) (TeX Live 2022) (preloaded format=uplatex 2022.11.21)  23 DEC 2022 21:49
 entering extended mode
  \write18 enabled.
  file:line:error style messages enabled.
@@ -1260,25 +1260,27 @@ LaTeX Font Info:    Font shape `JT2/hmc/m/n' will be
 [1
 
 ]
+LaTeX Font Info:    Font shape `JT2/hmc/m/n' will be
+(Font)              scaled to size 7.39746pt on input line 59.
 LaTeX Font Info:    Font shape `JT2/hmc/bx/n' in size <10> not available
-(Font)              Font shape `JT2/hgt/m/n' tried instead on input line 62.
+(Font)              Font shape `JT2/hgt/m/n' tried instead on input line 90.
 LaTeX Font Info:    Font shape `JT2/hgt/m/n' will be
-(Font)              scaled to size 9.24683pt on input line 62.
+(Font)              scaled to size 9.24683pt on input line 90.
 LaTeX Font Info:    Font shape `JY2/hmc/bx/n' in size <10> not available
-(Font)              Font shape `JY2/hgt/m/n' tried instead on input line 62.
+(Font)              Font shape `JY2/hgt/m/n' tried instead on input line 90.
 LaTeX Font Info:    Font shape `JY2/hgt/m/n' will be
-(Font)              scaled to size 9.24683pt on input line 62.
-[2] [3] (out/Entropy.aux)
+(Font)              scaled to size 9.24683pt on input line 90.
+[2] [3] [4] (out/Entropy.aux)
 Package rerunfilecheck Info: File `Entropy.out' has not changed.
-(rerunfilecheck)             Checksum: 6282C7DB8B0AC11083ECB5D3D8178D87;303.
+(rerunfilecheck)             Checksum: E56D3B87D93E297EAAFD2A6FF824CA02;303.
  ) 
 Here is how much of TeX's memory you used:
- 38174 strings out of 475422
- 774738 string characters out of 5788032
- 1317914 words of memory out of 5000000
- 59334 multiletter control sequences out of 15000+600000
- 524207 words of font info for 141 fonts, out of 8000000 for 9000
+ 38178 strings out of 475422
+ 774773 string characters out of 5788032
+ 1322914 words of memory out of 5000000
+ 59338 multiletter control sequences out of 15000+600000
+ 524329 words of font info for 142 fonts, out of 8000000 for 9000
  934 hyphenation exceptions out of 8191
- 89i,13n,83p,475b,1251s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 89i,16n,83p,475b,1392s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on out/Entropy.dvi (3 pages, 20288 bytes).
+Output written on out/Entropy.dvi (4 pages, 25228 bytes).

@@ -43,16 +43,44 @@
 \begin{equation}
 	\hat{\rho}_B^{can} = \frac{e^{-\beta\hat{H}_B}}{Z}\;,\quad Z = \sum_{n}e^{-\beta E_n}\;。
 \end{equation}
-任意の時刻における$S$と$B$の密度行列は、全系の密度行列のトレースアウトで求めることができる。すなわち、
-\begin{equation}
-	\Trace_B \coloneqq I\otimes\Trace,\quad \Trace_S \coloneqq \Trace\otimes I
-\end{equation}
-とすると、
-\begin{equation}
-	\hat{\rho}_S(t) = \Trace_B\hat{\rho}(t),\,\hat{\rho}_B(t) = \Trace_S\hat{\rho}(t)
-\end{equation}
-となる。
 
+\section{証明}
+初期状態でのvon Neumannエントロピーは、
+\begin{align}
+	S(\hat{\rho}(0)) & = S(\hat{\rho}_S(0)) + S(\hat{\rho}_B^{can}) = S(\hat{\rho}_S(0)) - \Trace{\hat{\rho}_B^{can}\ln\frac{e^{-\beta\hat{H}_B}}{Z}} \notag                    \\
+	                 & = S(\hat{\rho}_S(0)) - \Trace{\hat{\rho}_B^{can}\qty(-\beta\hat{H}_B - \ln{Z})} = S(\hat{\rho}_S(0)) + \beta\Trace{\hat{\rho}_B^{can}\hat{H}_B} + \ln{Z}
+	\label{eq:shoki}
+\end{align}
+と計算できる。
+\footnote{密度行列の$\Trace$が１になることを用いた：
+	\begin{equation}
+		\Trace\hat{\rho} = \sum_i p_i = 1\;。
+	\end{equation}
+}
+任意の時刻$t$におけるエントロピーは、任意の密度行列$\hat{\rho},\,\hat{\sigma}$に対して成立する不等式
+\begin{equation}
+	\Trace{\hat{\rho}\ln\hat{\rho}} \geq \Trace{\hat{\rho}\ln\hat{\sigma}}
+\end{equation}
+を用いると、$\hat{\rho}(t) = \hat{\rho}_S(t)\otimes\hat{\rho}_B(t)$として、
+\begin{align}
+	S(\hat{\rho}(t)) = -\Trace{\hat{\rho}(t)\ln\hat{\rho}(t)} & \leq -\Trace{\hat{\rho}(t)\ln\hat{\rho}_S(t)\otimes\hat{\rho}_B^{can}} \notag    \\
+	                                                          & =S(\hat{\rho}_S(t)) + \beta\Trace{\hat{\rho}_B(t)\hat{H}_B} + \ln{Z}\label{eq:S}
+\end{align}
+となる。また、全系はユニタリ発展をしているため、
+\begin{align}
+	S(\hat{\rho}(t)) & = S(U\hat{\rho}(0)U^\dagger) = -\Trace(U\hat{\rho}(0)\ln\hat{\rho}(0)U^\dagger) \notag                                      \\
+	                 & = -\Trace(\hat{\rho}(0)\ln\hat{\rho}(0)U^\dagger U) = -\Trace(\hat{\rho}(0)\ln\hat{\rho}(0)) = S(\hat{\rho}(0))\label{eq:U}
+\end{align}
+となる。式\eqref{eq:shoki}、式\eqref{eq:S}、式\eqref{eq:U}を用いると、、系$S$のエントロピー変化を$\varDelta S_S \coloneqq S(\hat{\rho}_S(t)) - S(\hat{\rho}_S(0))$として、
+\begin{equation}
+	S(\hat{\rho}_S(t)) + \beta\Trace{\hat{\rho}_B(t)\hat{H}_B} + \ln{Z} - S(\hat{\rho}(t)) = \varDelta S_S + \beta\Trace\qty[\qty(\hat{\rho}_B(t) - \hat{\rho}_B(0))\hat{H}_B]\geq 0
+\end{equation}
+が成立する。熱浴$B$のエネルギー変化を$\varDelta E$、始状態から時刻$t$までに熱浴$B$から系$S$に流入した熱を$Q$とおくと、
+$\Trace\qty[\qty(\hat{\rho}_B(t) - \hat{\rho}_B(0))\hat{H}_B] =\Trace{\hat{\rho}_B(t)\hat{H}_B} - \Trace{\hat{\rho}_B(0)\hat{H}_B} =  -\varDelta E_B = Q$が成立することより、
+熱力学第二法則が成立することが示された：
+\begin{equation}
+	\varDelta S_S + \beta Q\geq 0\;。
+\end{equation}
 \section{必要な定理一覧}
 
 \begin{tcolorbox}[
@@ -112,21 +140,23 @@
 			                                     & = \sum_n \ln\lambda_{n,A}\ket{n}_A\otimes\sum_{n'}\ket{n'}_B + \sum_n\ket{n}_A\otimes\sum_{n'}\ln\lambda_{n',B}\ket{n'}_B
 			= \hat{\rho}_A\otimes I_B + I_A\otimes\hat{\rho}_B
 		\end{align}
-		となる。したがって、
-		\begin{equation}
-			-\Trace{\qty[\qty(\hat{\rho}_A\otimes\hat{\rho}_B)\ln(\hat{\rho}_A\otimes\hat{\rho}_B)]}
-			= -\Trace\qty(\hat{\rho}_A\ln\hat{\rho}_A\otimes \hat{\rho}_B) -\Trace\qty(\hat{\rho}_A\otimes\hat{\rho}_B\ln\hat{\rho}_B) = S(\hat{\rho}_A) + S(\hat{\rho}_B)
-		\end{equation}
+		となる。したがって、von Neumannエントロピーの加法性
+		\begin{align}
+			S(\hat{\rho}_A\otimes\hat{\rho}_B) & = -\Trace{\qty[\qty(\hat{\rho}_A\otimes\hat{\rho}_B)\ln(\hat{\rho}_A\otimes\hat{\rho}_B)]} \notag                                                              \\
+			                                   & = -\Trace\qty(\hat{\rho}_A\ln\hat{\rho}_A\otimes \hat{\rho}_B) -\Trace\qty(\hat{\rho}_A\otimes\hat{\rho}_B\ln\hat{\rho}_B) = S(\hat{\rho}_A) + S(\hat{\rho}_B)
+		\end{align}
 		を得る。
 	\end{theorem}
 \end{tcolorbox}
 
-\section{証明}
-初期状態でのvon Neumannエントロピーは、
-\begin{equation}
-	S(\hat{\rho}(0)) = -\Trace{\hat{\rho}(0)\ln\hat{\rho}(0)} = -\Trace\qty(\hat{\rho}_S(0)\ln)
-\end{equation}
-
-
+\vskip\baselineskip
+\begin{tcolorbox}[
+		colback = white,
+		colframe = green!35!black,
+		fonttitle = \bfseries]
+	\begin{theorem}[]
+		a
+	\end{theorem}
+\end{tcolorbox}
 
 \end{document}
