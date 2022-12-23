@@ -27,14 +27,106 @@
 \begin{equation}
 	\hat{\rho} = \sum_{i=0}^{N-1}p_i\ket{\phi_i}\bra{\phi_i}
 \end{equation}
-と定義される。系の完全性$\sum_n\ket{n}\bra{n} = I$を満たす何らかの状態ベクトル$\ket{n}$を用いて$\Trace$を計算できるため
+と定義される。正規直交基底$\ket{0},\,\ket{1},\,\ldots,\,\ket{N-1}$を用いて$\Trace$を計算できることより、密度行列は
 \begin{equation}
 	\Trace{\hat{\rho}} = \sum_n\bra{n}\hat{\rho}\ket{n} = \sum_{i=0}^{N-1}p_i = 1
 \end{equation}
-となる性質を持つ。すなわち、von Neumannエントロピーは形式的にShannonエントロピーと一致する：
+となる性質を持つ。さらに、von Neumannエントロピーは形式的にShannonエントロピーと一致する：
 \begin{equation}
-	S(\hat{\rho}) = -\sum_{i=0}^{N-1} p_i\ln{p_i}\;。
+	S(\hat{\rho}) = -\sum_{i=0}^{N-1} p_i\ln{p_i}\;\text{（$=$Shannonエントロピー）}\;。
 \end{equation}
+時刻$t$における全系の密度行列を$\hat{\rho}(t)$とおくと、密度行列の初期状態は$S$と$B$に相関がない状態で表すことができる：
+\begin{equation}
+	\hat{\rho}(0) = \hat{\rho}_S(0)\otimes\hat{\rho}_B(0) = \hat{\rho}_S(0)\otimes\hat{\rho}^{can}_B\;。
+\end{equation}
+ただし、熱浴の初期状態はカノニカル分布での熱平衡状態を実現していると仮定した：
+\begin{equation}
+	\hat{\rho}_B^{can} = \frac{e^{-\beta\hat{H}_B}}{Z}\;,\quad Z = \sum_{n}e^{-\beta E_n}\;。
+\end{equation}
+任意の時刻における$S$と$B$の密度行列は、全系の密度行列のトレースアウトで求めることができる。すなわち、
+\begin{equation}
+	\Trace_B \coloneqq I\otimes\Trace,\quad \Trace_S \coloneqq \Trace\otimes I
+\end{equation}
+とすると、
+\begin{equation}
+	\hat{\rho}_S(t) = \Trace_B\hat{\rho}(t),\,\hat{\rho}_B(t) = \Trace_S\hat{\rho}(t)
+\end{equation}
+となる。
+
+\section{必要な定理一覧}
+
+\begin{tcolorbox}[
+		colback = white,
+		colframe = green!35!black,
+		fonttitle = \bfseries]
+	\begin{theorem}[エルミート演算子を引数にもつ関数について]
+		$\hat{A}$をヒルベルト空間$\mathcal{H}$上のエルミート演算子、$f:x\in \mathbb{R} \mapsto f(x)\in \mathbb{R}$を実数値関数とするとき、スペクトル分解
+		\begin{equation}
+			\hat{A} = \sum_{k=1}^m a_k\ket{\phi_k}
+		\end{equation}
+		を用いて$f(\hat{A})$を次のように定義する：
+		\begin{equation}
+			f(\hat{A}) \coloneqq \sum_{k=1}^{m} f(a_k)\ket{\phi_k}\;。
+		\end{equation}
+		ただし、$\hat{A}$の固有値は$f$の定義域に入っているとする。
+		\label{th:kansu}
+	\end{theorem}
+\end{tcolorbox}
+\vskip\baselineskip
+\begin{tcolorbox}[
+		colback = white,
+		colframe = green!35!black,
+		fonttitle = \bfseries]
+	\begin{theorem}[カノニカル分布の密度行列について]
+		系がカノニカル分布で熱平衡状態を達成しているときの密度行列$\hat{\rho}^{can}$を考える。系の状態$\ket{n}$の実現確率は$p_n =e^{-\beta E_n}/Z,\,Z = \sum_n e^{-\beta E_n}$と与えられる。
+		$\hat{H}\ket{n} = E_n\ket{n}$が成立していることと定理\ref{th:kansu}から、密度行列$\hat{\rho}^{can}$は
+		\begin{equation}
+			\hat{\rho}^{can} = \sum_n p_n\ket{n}\bra{n} = \sum_n\ket{n}\frac{e^{-\beta E_n}}{Z}\bra{n} = \frac{e^{-\beta\hat{H}}}{Z}
+		\end{equation}
+		と求まる。
+	\end{theorem}
+\end{tcolorbox}
+\vskip\baselineskip
+\begin{tcolorbox}[
+		colback = white,
+		colframe = green!35!black,
+		fonttitle = \bfseries]
+	\begin{theorem}[von Neumannエントロピーの加法性]
+		von Neumannエントロピーに関して加法性
+		\begin{equation}
+			S(\hat{\rho}_A\otimes\hat{\rho}_B) = S(\hat{\rho}_A) + S(\hat{\rho}_B)
+		\end{equation}
+		が成立する。以下ではこれを示す。
+
+		まず、$\hat{\rho}_A,\,\hat{\rho}_B$のスペクトル分解を考える：
+		\begin{equation}
+			\hat{\rho}_A = \sum_n \lambda_{n,A}\ket{n}_A,\,\hat{\rho}_B = \sum_n\lambda_{n,B}\ket{n}_B\;。
+		\end{equation}
+		これより
+		\begin{equation}
+			\hat{\rho}_A\otimes\hat{\rho}_B = \sum_{n,\,n'}\lambda_{n,A}\lambda_{n',B}\ket{n}_A\otimes\ket{n'}_B
+		\end{equation}
+		が成立するため、
+		\begin{align}
+			\ln(\hat{\rho}_A\otimes\hat{\rho}_B) & = \sum_{n,\,n'}\ln(\lambda_{n,A}\lambda_{n',B})\ket{n}_A\otimes\ket{n'}_B \notag                                          \\
+			                                     & = \sum_n \ln\lambda_{n,A}\ket{n}_A\otimes\sum_{n'}\ket{n'}_B + \sum_n\ket{n}_A\otimes\sum_{n'}\ln\lambda_{n',B}\ket{n'}_B
+			= \hat{\rho}_A\otimes I_B + I_A\otimes\hat{\rho}_B
+		\end{align}
+		となる。したがって、
+		\begin{equation}
+			-\Trace{\qty[\qty(\hat{\rho}_A\otimes\hat{\rho}_B)\ln(\hat{\rho}_A\otimes\hat{\rho}_B)]}
+			= -\Trace\qty(\hat{\rho}_A\ln\hat{\rho}_A\otimes \hat{\rho}_B) -\Trace\qty(\hat{\rho}_A\otimes\hat{\rho}_B\ln\hat{\rho}_B) = S(\hat{\rho}_A) + S(\hat{\rho}_B)
+		\end{equation}
+		を得る。
+	\end{theorem}
+\end{tcolorbox}
+
 \section{証明}
+初期状態でのvon Neumannエントロピーは、
+\begin{equation}
+	S(\hat{\rho}(0)) = -\Trace{\hat{\rho}(0)\ln\hat{\rho}(0)} = -\Trace\qty(\hat{\rho}_S(0)\ln)
+\end{equation}
+
+
 
 \end{document}
