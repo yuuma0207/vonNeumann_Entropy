@@ -1,0 +1,40 @@
+\input{~/macro.tex}
+\title{von Neumannエントロピーを元にした熱力学第二法則の導出}
+%\author{20B01392 松本侑真}
+\date{\today}
+\begin{document}
+\maketitle
+\begin{abstract}
+	系$S$と熱浴$B$が接している状況を考える。熱浴は温度$\beta = (k_{\text{B}}T)^{-1}$であり、系に$Q$の熱を与えるとする。
+	このとき、系$S$のエントロピー変化$k_{\text{B}}\varDelta S_S$と熱浴のエントロピー変化$Q/T$の和は必ず正になるというのが熱力学第2法則である：
+	\begin{equation*}
+		\varDelta S_S + \beta Q \geq 0\;。
+	\end{equation*}
+	以下では、平衡熱力学に基づかないセットアップからスタートして、熱力学第二法則を導出する。
+\end{abstract}
+\tableofcontents
+\section{セットアップ}
+系$S$と熱浴$B$が接しているとき、全系のHamiltonian$\hat{H}$は
+\begin{equation}
+	\hat{H} = \hat{H}_S + \hat{H}_B + \hat{H}_I
+\end{equation}
+と表される。ここで、$\hat{H}_S,\,\hat{H}_B$はそれぞれ系$S$と熱浴$B$が独立して存在する場合のHamiltonianであり、$\hat{H}_I$は系$S$と熱浴$B$の相互作用Hamiltonianである。
+次に、密度行列$\hat{\rho}$が与えられた際に定義されるvon Neumannエントロピーを導入する：
+\begin{equation}
+	S(\hat{\rho}) \coloneqq -\Trace\qty(\hat{\rho}\ln\hat{\rho})\;。
+\end{equation}
+密度行列とは、系全体を張る状態ベクトルの集合$\ket{\phi_0},\,\ket{\phi_1},\,\ldots\ket{\phi_{N-1}}$と、それぞれの状態が実現する確率$p_0,\,p_1,\,\ldots,\,p_{N-1}\quad\qty(\sum p_i = 1)$が与えられたときに、
+\begin{equation}
+	\hat{\rho} = \sum_{i=0}^{N-1}p_i\ket{\phi_i}\bra{\phi_i}
+\end{equation}
+と定義される。系の完全性$\sum_n\ket{n}\bra{n} = I$を満たす何らかの状態ベクトル$\ket{n}$を用いて$\Trace$を計算できるため
+\begin{equation}
+	\Trace{\hat{\rho}} = \sum_n\bra{n}\hat{\rho}\ket{n} = \sum_{i=0}^{N-1}p_i = 1
+\end{equation}
+となる性質を持つ。すなわち、von Neumannエントロピーは形式的にShannonエントロピーと一致する：
+\begin{equation}
+	S(\hat{\rho}) = -\sum_{i=0}^{N-1} p_i\ln{p_i}\;。
+\end{equation}
+\section{証明}
+
+\end{document}
