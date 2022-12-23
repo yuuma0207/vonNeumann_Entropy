@@ -154,8 +154,36 @@ $\Trace\qty[\qty(\hat{\rho}_B(t) - \hat{\rho}_B(0))\hat{H}_B] =\Trace{\hat{\rho}
 		colback = white,
 		colframe = green!35!black,
 		fonttitle = \bfseries]
-	\begin{theorem}[]
-		a
+	\begin{theorem}[物理量の期待値は密度行列を用いて計算できる]
+		物理量$A$に対応するエルミート演算子を$\hat{A}$とすると、$A$の期待値$\expval{A}$は
+		\begin{equation}
+			\expval{A} = \Trace{\hat{\rho}\hat{A}}
+		\end{equation}
+		と表すことができる。系の正規直交基底$\ket{n}$を用いると、実際に右辺は次のように計算できる：
+		\begin{equation}
+			\Trace{\hat{\rho}\hat{A}} = \sum_n\bra{n}\hat{\rho}\hat{A}\ket{n} = \sum_{n,\,i}p_i\bra{n}\ket{i}\bra{i}\hat{A}\ket{n} = \sum_{n,\,i}p_i\delta_{n,i}a_n\ket{n} = \sum_ip_ia_i\;。
+		\end{equation}
+		$a_i$は$\hat{A}$の固有値であり、物理量$A$の観測値である。そのため、$\sum_ip_ia_i = \expval{A}$となる。
+
+	\end{theorem}
+\end{tcolorbox}
+\vskip\baselineskip
+\begin{tcolorbox}[
+		colback = white,
+		colframe = green!35!black,
+		fonttitle = \bfseries]
+	\begin{theorem}[系の時間発展は密度行列のユニタリ発展に押し付けることができる]
+		初期状態での系の状態ベクトル$\ket{\psi(0)}$が与えられているとする。このとき、任意の時刻$t$における系の状態ベクトル$\ket{\psi(t)}$は、ユニタリ行列$U(t)$を用いて
+		\begin{equation}
+			\ket{\psi(t)} = U(t)\ket{\psi(0)}
+		\end{equation}
+		と表される。なお、$U(t) = \exp\qty(\frac{\hat{H}(t)}{i\hbar})$である。$\ket{\psi(t)}$が時間に依存するSchr\"{o}dinger方程式を満たすことは簡単にわかるであろう。
+		ここで、ユニタリ発展をする系においては、Hamiltonianのとある固有状態を実現する確率が時刻に依らないことを用いると、時刻$t$における密度行列$\hat{\rho}(t)$は
+		\begin{equation}
+			\hat{\rho}(t) = \sum_ip_i\ket{\phi_i(t)}\bra{\phi_i(t)} = \sum_ip_iU\ket{\phi_i(0)}\bra{\phi_i(0)}U^\dagger = U\hat{\rho}(0)U^\dagger
+		\end{equation}
+		となる。すなわち、系がユニタリな時間発展をする（時間に依存するShr\"{o}dinger方程式に従って時間発展する）際には、任意の時刻$t$の密度行列を初期状態の密度行列で表すことができる。
+		なお、$\ket{\phi_i(t)}$は$\hat{H}(t)$の固有状態とした。
 	\end{theorem}
 \end{tcolorbox}
 
